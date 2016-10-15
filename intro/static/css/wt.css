@@ -1,0 +1,95 @@
+/* Navigation bar */
+
+/* Small screens */
+.navbar-custom .navbar-toggle {
+    background: #fc2313;
+    border-color: #fc2313;
+}
+
+.navbar-custom .navbar-toggle:focus, .navbar-custom .navbar-toggle:hover {
+    background: #fc2313;
+}
+/* End Small screens */
+
+.navbar-custom .navbar-nav>.active>a {
+    background: #fc2313;
+}
+
+.navbar-custom .nav li a:hover {
+    color: #fc2313;
+}
+
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:hover {
+    color: #fc2313;
+}
+
+.navbar-custom .navbar-nav>.active>a:focus,
+.navbar-custom .navbar-nav>.active>a:hover {
+    background: #fc2313;
+}
+
+
+/* Brand */
+.navbar-custom .navbar-brand {
+    color: #Fc2313;
+}
+
+.navbar-custom .navbar-brand.active,
+.navbar-custom .navbar-brand:active,
+.navbar-custom .navbar-brand:focus,
+.navbar-custom .navbar-brand:hover {
+    color: #B20100;
+}
+
+/* Button */
+.btn-xl {
+    border-color: #fc2313;
+    background-color: #fc2313;
+    opacity: 0.9;
+}
+
+.btn-xl:hover {
+    background-color: #B20100;
+    border-color: #B20100;
+}
+
+/* Icons */
+
+.text-primary {
+    color: #fc2313;
+}
+
+/* Product */
+#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+    background: rgba(251,19,19,0.68);
+}
+
+/* Footer */
+ul.list-inline.quicklinks a {
+    color: #c1c1c1;
+}
+
+ul.social-buttons li a:active,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:hover {
+    background-color: #fc2313;
+}
+
+/* End Footer*/
+
+/* Details of Products */
+
+.btn-primary {
+    border-color: #c1c1c1;
+    background-color: #c1c1c1;
+    /*opacity: 0.9;*/
+}
+
+.btn-primary.active, .btn-primary:active,
+.btn-primary:focus, .btn-primary:hover,
+.open .dropdown-toggle.btn-primary {
+    border-color: #9f9f9f;
+    background-color: #9f9f9f;
+}
+
