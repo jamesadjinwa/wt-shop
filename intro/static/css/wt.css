@@ -15,12 +15,8 @@
     background: #fc2313;
 }
 
-.navbar-custom .nav li a:hover {
-    color: #fc2313;
-}
-
-.navbar-custom .nav li a:focus,
-.navbar-custom .nav li a:hover {
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus {
     color: #fc2313;
 }
 
@@ -61,7 +57,8 @@
 }
 
 /* Product */
-#portfolio .portfolio-item .portfolio-link .portfolio-hover {
+#portfolio .portfolio-item
+.portfolio-link .portfolio-hover {
     background: rgba(251,19,19,0.68);
 }
 
@@ -93,3 +90,6 @@ ul.social-buttons li a:hover {
     background-color: #9f9f9f;
 }
 
+.contacts  {
+    font-size: 15px;
+}
