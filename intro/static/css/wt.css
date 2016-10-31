@@ -56,6 +56,10 @@
     color: #fc2313;
 }
 
+#services, #about, #contact, #portfolio, .clients {
+    padding: 50px 0;
+}
+
 /* Product */
 #portfolio .portfolio-item
 .portfolio-link .portfolio-hover {
@@ -66,6 +70,10 @@
 div.col-md-3.col-sm-6 {
     width: 100%;
 }
+
+/*#partners {
+    padding: 50px 0;
+}*/
 
 /* Footer */
 ul.list-inline.quicklinks a {
