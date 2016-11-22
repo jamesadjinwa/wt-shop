@@ -14,14 +14,23 @@ def intro(request):
 def contact(request):
 
     if request.method == 'GET':
-        form_class = ContactForm()
-    else:
-        form_class = ContactForm(request.POST)
-        if form_class.is_valid():
-            from_email = form_class.cleaned_data['contact_email']
-            message = form_class.cleaned_data['contact_message']
-            send_mail(subject='Test', message=message, from_email=from_email, recipient_list=['admin@example.com'])
 
-    return render(request, 'intro/index.html/#contact', {
+        form_class = ContactForm()
+
+    else:
+
+        form_class = ContactForm(request.POST)
+
+        if form_class.is_valid():
+            try:
+                from_email = form_class.cleaned_data['contact_email']
+                message = form_class.cleaned_data['contact_message']
+                # send_mail(subject='Test', message=message, from_email=from_email, recipient_list=['admin@example.com'])
+                print(from_email, message)
+                # return redirect('/')
+            except:
+                pass
+
+    return render(request, 'intro/index.html', {
         'form': form_class,
     })
