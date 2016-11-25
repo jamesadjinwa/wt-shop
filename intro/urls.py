@@ -9,3 +9,4 @@ urlpatterns = [
     url(r'^$', views.intro, name="intro"),
     url(r'^contact$', views.contact, name="contact")
 ]
+
