@@ -31,6 +31,6 @@ def contact(request):
             except:
                 pass
 
-    return render(request, 'intro/index.html', {
+    return render(request, 'intro/index.html/#contact', {
         'form': form_class,
     })
