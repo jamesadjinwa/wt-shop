@@ -3,15 +3,14 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ContactForm
 from django.contrib import messages
-'''
 from django.core.mail import EmailMessage
 from django.template import Context
 from django.template.loader import get_template
-'''
+
 
 # Create your views here.
 
-
+'''
 def intro(request):
 
     if request.method == 'GET':
@@ -22,14 +21,16 @@ def intro(request):
 
         form_class = ContactForm(request.POST)
 
+        import pdb;
+        pdb.set_trace()
+
         if form_class.is_valid():
             try:
                 name = form_class.cleaned_data['contact_name']
                 from_email = form_class.cleaned_data['contact_email']
                 message = form_class.cleaned_data['contact_message']
                 phone = form_class.cleaned_data['contact_phone']
-                import pdb;
-                pdb.set_trace()
+
                 send_mail(subject='Test', message=message, from_email=from_email, recipient_list=['admin@example.com'])
                 print(name, from_email, phone, message)
                 messages.add_message(request, messages.SUCCESS, 'Thank you for your message.')
@@ -38,9 +39,9 @@ def intro(request):
                 return HttpResponse('Invalid header found.')
 
     return render(request, 'intro/index.html', {'form': form_class, })
-
-
 '''
+
+
 def intro(request):
 
     if request.method == 'GET':
@@ -50,6 +51,9 @@ def intro(request):
     else:
 
         form_class = ContactForm(request.POST)
+
+        import pdb;
+        pdb.set_trace()
 
         if form_class.is_valid():
             try:
@@ -65,22 +69,21 @@ def intro(request):
                     'form_content': message,
                 })
                 content = template.render(context)
-
                 email = EmailMessage(
                     "New contact form submission",
                     content,
                     "Your website" + '',
-                    ['youremail@gmail.com'],
+                    ['jaymee126@gmail.com'],
                     headers={'Reply-To': contact_email}
                 )
                 email.send()
+                print(contact_name, contact_email, phone, message)
                 messages.add_message(request, messages.SUCCESS, 'Thank you for your message.')
                 return redirect('/')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
 
     return render(request, 'intro/index.html', {'form': form_class, })
-'''
 
 '''
 def contact(request):
