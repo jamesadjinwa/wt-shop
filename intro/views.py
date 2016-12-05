@@ -79,7 +79,7 @@ def intro(request):
                 email.send()
                 print(contact_name, contact_email, phone, message)
                 messages.add_message(request, messages.SUCCESS, 'Thank you for your message.')
-                return redirect('/')
+                return HttpResponseRedirect('/')
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
 
