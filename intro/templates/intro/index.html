@@ -38,6 +38,16 @@
 
 <body id="page-top" class="index">
 
+    {% comment %}
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <p>messages.tag</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endcomment %}
+
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
@@ -68,7 +78,8 @@
                         <a class="page-scroll" href="#partners">Partners</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="{% url 'intro' %}#contact" data-target="#contact">Contact</a>
+                        <!--<a class="page-scroll" href="{% url 'intro' %}#contact" data-target="#contact">Contact</a>-->
+                        <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -284,7 +295,7 @@ des solutions informatiques.</h3>
 
                 {% block content %}
 
-                    <form name="sentMessage" id="contactForm" novalidate method="post" action="">
+                    <form role="form" name="sentMessage" id="contactForm" novalidate method="post" action="">
 
                         {% csrf_token %}
 
@@ -350,8 +361,9 @@ des solutions informatiques.</h3>
                         <li><i class="fa fa-mobile">&nbsp;+237 699 011 293</i></li>
                     </ul>
                 </div>
+                {% now "Y" as current_year %}
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Wizards Technology 2016</span>
+                    <span class="copyright">Copyright &copy; Wizards Technology {{ current_year }}</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">

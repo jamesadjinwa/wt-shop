@@ -26,7 +26,8 @@ class ContactForm(forms.Form):
     phone_regex = forms.RegexField(regex=r'^\+237\d{9}$',
                                    error_message='Phone number must be entered in the format: +237 followed by 9 digits allowed.'
                                    )
-    contact_phone = forms.CharField(required=True, validators=[phone_regex], widget=forms.TextInput(
+    # contact_phone = forms.CharField(required=True, validators=[phone_regex], widget=forms.TextInput(
+    contact_phone = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
             'type': 'tel',
             'class': 'form-control',
