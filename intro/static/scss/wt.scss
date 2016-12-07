@@ -1,0 +1,43 @@
+form {
+	> div {
+		> input[type="text"],
+	    > input[type="email"],
+	    > input[type="tel"] {
+
+			&:valid {
+		        background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/check.svg);
+		        background-size: 20px;
+		        background-repeat: no-repeat;
+		        background-position: 20px 20px;
+		        & + label {
+		          opacity: 0;
+		        }
+		      }
+
+		      &:invalid:not(:focus):not(:placeholder-shown) {
+		        background: pink;
+		        & + label {
+		          opacity: 0;
+		        }
+		      }
+		      
+		      &:invalid:focus:not(:placeholder-shown) {
+		        & ~ .errorlist {
+		          max-height: 200px;
+		          padding: 0 30px 20px 50px;
+		        }
+		      }
+
+		     }
+
+	      .errorlist {
+	      padding: 0 30px 0 50px;
+	      color: #999;
+	      max-height: 0;
+	      transition: 0.28s;
+	      overflow: hidden;
+	      color: red;
+	      font-style: italic;
+	    }
+    }
+}

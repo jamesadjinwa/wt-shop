@@ -26,6 +26,7 @@
     <!-- Theme CSS -->
     <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/wt.css' %}" rel="stylesheet">
+    <link href="{% static 'scss/wt.scss' %}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,15 +39,14 @@
 
 <body id="page-top" class="index">
 
-    {% comment %}
+
     {% if messages %}
     <div class="messages">
         {% for message in messages %}
-        <p>messages.tag</p>
+        <p>{{ message }}</p>
         {% endfor %}
     </div>
     {% endif %}
-    {% endcomment %}
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -299,7 +299,6 @@ des solutions informatiques.</h3>
 
                         {% csrf_token %}
 
-                    #{{ form.non_field_errors }}
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">

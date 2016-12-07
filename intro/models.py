@@ -1,6 +1,10 @@
 from django.db import models
 from django import forms
+from django.core.validators import RegexValidator
 
+
+phoneValidator = RegexValidator(r'^(\+237\d{9}|\d{9})$',
+                                'Sorry! Valid format: +237 followed by 9 digits allowed.')
 
 # Create your models here.
 
@@ -23,16 +27,14 @@ class ContactForm(forms.Form):
             'id': 'email'
         }
     ))
-    phone_regex = forms.RegexField(regex=r'^\+237\d{9}$',
-                                   error_message='Phone number must be entered in the format: +237 followed by 9 digits allowed.'
-                                   )
-    # contact_phone = forms.CharField(required=True, validators=[phone_regex], widget=forms.TextInput(
-    contact_phone = forms.CharField(required=True, widget=forms.TextInput(
+    contact_phone = forms.CharField(required=True, validators=[phoneValidator], max_length=13, widget=forms.TextInput(
+        # contact_phone = forms.CharField(required=True, widget=forms.TextInput(
         attrs={
             'type': 'tel',
             'class': 'form-control',
             'placeholder': "Your Phone *",
-            'id': 'phone'
+            'id': 'phone',
+            'pattern': '^(\+237\d{9}|\d{9})$'
         }
     ))
     contact_message = forms.CharField(required=True, widget=forms.Textarea(

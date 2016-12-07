@@ -4,5 +4,5 @@ Contact Name:
 Email:
 {{ contact_email }}
 
-Content:
+Message:
 {{ message|safe|striptags }}
