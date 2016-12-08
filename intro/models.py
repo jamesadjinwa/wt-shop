@@ -1,7 +1,8 @@
 from django.db import models
 from django import forms
 from django.core.validators import RegexValidator
-from captcha.fields import ReCaptchaField
+from snowpenguin.django.recaptcha2.fields import ReCaptchaField
+from snowpenguin.django.recaptcha2.widgets import ReCaptchaWidget
 
 
 phoneValidator = RegexValidator(r'^(\+237\d{9}|\d{9})$',
@@ -45,7 +46,4 @@ class ContactForm(forms.Form):
             'id': 'message'
         }
     ))
-    # captcha = ReCaptchaField(attrs={
-    #     'data-theme': 'light',
-    #     'data-size': 'compact',
-    # })
+    captcha = ReCaptchaField(widget=ReCaptchaWidget())
