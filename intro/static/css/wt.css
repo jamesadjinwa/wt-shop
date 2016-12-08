@@ -108,29 +108,37 @@ ul.social-buttons li a:hover {
 }
 
 .messages {
+    display: block;
+    visibility: visible;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
+    line-height: 2em;
+    vertical-align: middle;
+
+    -moz-opacity: 0.9;
+    -webkit-opacity: 0.9;
     opacity: 0.9;
+
+    -webkit-transition: visibility 5s, opacity 5s ease-in-out;
+    -moz-transition: visibility 5s, opacity 5s ease-in-out;
+    -ms-transition: visibility 5s, opacity 5s ease-in-out;
+    -o-transition: visibility 5s, opacity 5s ease-in-out;
+    transition: visibility 5s, opacity 5s ease-in-out;
+
     text-align: center;
     background-color: rgba(255,255,100,0.5);
     margin-left: auto;
     margin-right: auto;
-    transition: all 1s linear;
-    display: block;
+    
+    
 }
 
 .messages:hover {
-    display: none;
+    visibility: none;
     opacity: 0;
-}
-
-.messages p {
-    line-height: 2em;
-    vertical-align: middle;
-    /*position: fixed;*/
 }
 
 .errorlist {
@@ -148,3 +156,4 @@ ul.social-buttons li a:hover {
     box-sizing: border-box;
 
 }
+

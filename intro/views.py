@@ -19,7 +19,7 @@ def intro(request):
 
     else:
 
-        form_class = ContactForm(request.POST)
+        form_class = ContactForm(request.POST or None, request.FILES or None)
 
         if form_class.is_valid():
 
@@ -33,6 +33,7 @@ def intro(request):
                 context = Context({
                     'contact_name': contact_name,
                     'contact_email': contact_email,
+                    'phone': phone,
                     'message': message,
                 })
 
@@ -40,8 +41,8 @@ def intro(request):
                 email = EmailMessage(
                     "New contact form submission",
                     content,
-                    "Your website" + '',
-                    ['jaymee126@gmail.com'],
+                    "www.wizardstechnology.biz" + '',
+                    ['gqkircyu@grr.la'],                            # TODO: change this email on production host
                     headers={'Reply-To': contact_email}
                 )
 

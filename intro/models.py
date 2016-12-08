@@ -1,10 +1,11 @@
 from django.db import models
 from django import forms
 from django.core.validators import RegexValidator
+from captcha.fields import ReCaptchaField
 
 
 phoneValidator = RegexValidator(r'^(\+237\d{9}|\d{9})$',
-                                'Sorry! Valid format: +237 followed by 9 digits allowed.')
+                                'Enter a valid phone number. Format: +237 followed by 9 digits allowed.')
 
 # Create your models here.
 
@@ -44,3 +45,7 @@ class ContactForm(forms.Form):
             'id': 'message'
         }
     ))
+    # captcha = ReCaptchaField(attrs={
+    #     'data-theme': 'light',
+    #     'data-size': 'compact',
+    # })
