@@ -5,8 +5,8 @@ from snowpenguin.django.recaptcha2.fields import ReCaptchaField
 from snowpenguin.django.recaptcha2.widgets import ReCaptchaWidget
 
 
-phoneValidator = RegexValidator(r'^(\+237\d{9}|\d{9})$',
-                                'Enter a valid phone number. Format: +237 followed by 9 digits allowed.')
+phoneValidator = RegexValidator(r'^(\+237[2356789]\d{8}|[2356789]\d{8})$',
+                                'Enter a valid Cameroon phone number.')
 
 # Create your models here.
 
@@ -36,14 +36,15 @@ class ContactForm(forms.Form):
             'class': 'form-control',
             'placeholder': "Your Phone *",
             'id': 'phone',
-            'pattern': '^(\+237\d{9}|\d{9})$'
+            'pattern': '^(\+237[2356789]\d{8}|[2356789]\d{8})$'
         }
     ))
     contact_message = forms.CharField(required=True, widget=forms.Textarea(
         attrs={
             'class': 'form-control',
+            'style': 'height:135px',
             'placeholder': "Your Message *",
             'id': 'message'
         }
     ))
-    captcha = ReCaptchaField(widget=ReCaptchaWidget())
+    # captcha = ReCaptchaField(widget=ReCaptchaWidget())
