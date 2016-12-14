@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'intro',
+    'snowpenguin.django.recaptcha2'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,8 +107,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Email sending
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'testing@example.com'
+DEFAULT_FROM_EMAIL = 'test@localhost'
+EMAIL_HOST = 'localhost'
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-EMAIL_PORT = 1025
+# EMAIL_USE_TLS = False
+EMAIL_PORT = 25
+
+# Captcha (Google ReCaptcha)
+RECAPTCHA_PUBLIC_KEY = '6Le5PQ4UAAAAAGZU8Wrffzkgc3DzBgtBWvU7RhSu'
+RECAPTCHA_PRIVATE_KEY = '6Le5PQ4UAAAAABlgTaD_mek0gURxkFN_kGq63WWs'

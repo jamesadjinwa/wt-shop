@@ -253,12 +253,12 @@ des solutions informatiques.</h3>
                                 <img src="{% static 'img/logos/branding_lenovo-logo.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
                         </div>
-                        <!--<div class="col-md-3 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <a href="#">
-                                <img src="{% static 'img/logos/designmodo.jpg' %}" class="img-responsive img-centered" alt="">
+                                <img src="{% static 'img/logos/branding_dell-logo.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
                         </div>
-                        <div class="col-md-3 col-sm-6">
+                        <!--<div class="col-md-3 col-sm-6">
                             <a href="#">
                                 <img src="{% static 'img/logos/themeforest.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
@@ -288,7 +288,7 @@ des solutions informatiques.</h3>
 
                 {% block content %}
 
-                    <form role="form" name="sentMessage" id="contactForm" novalidate method="post" action="{% url "intro" %}">
+                    <form role="form" name="sentMessage" id="contactForm" method="post" action="{% url "intro" %}">
 
                         {% csrf_token %}
 

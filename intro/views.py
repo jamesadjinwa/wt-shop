@@ -1,8 +1,7 @@
-
+from .forms import ContactForm
 from django.shortcuts import render
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import *
 from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.template import Context
@@ -41,17 +40,27 @@ def intro(request):
                 email = EmailMessage(
                     "New contact form submission",
                     content,
-                    "www.wizardstechnology.biz" + '',
-                    ['gqkircyu@grr.la'],                            # TODO: change this email on production host
+                    "noreply@wizardstechnology.biz" + '',
+                    ['test@localhost'],                            # TODO: change this email on production host
                     headers={'Reply-To': contact_email}
                 )
 
-                email.send()
+                email.send(fail_silently=False)
                 print(contact_name, contact_email, phone, message)
+
                 messages.success(request, 'Thank you for your message !')
 
+                new_form = form_class.save(commit=False)
+                new_form.contact_name = contact_name
+                new_form.contact_email = contact_email
+                new_form.contact_phone = phone
+                new_form.contact_message = message
+                new_form.save()
+                form_class.save_m2m()
+
                 # pdb.set_trace()
-                return HttpResponseRedirect('')
+                return HttpResponseRedirect('#contact')
+
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
 
@@ -61,3 +70,10 @@ def intro(request):
 
     return render(request, 'intro/index.html', {'form': form_class, })
 
+                # new_form = form_class.save(commit=False)
+                # new_form.contact_name = contact_name
+                # new_form.contact_email = contact_email
+                # new_form.contact_phone = phone
+                # new_form.contact_message = message
+                # new_form.save()
+                # form_class.save_m2m()

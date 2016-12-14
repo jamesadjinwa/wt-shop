@@ -23,46 +23,56 @@ function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
-$.ajaxSetup({
+/*$.ajaxSetup({
     beforeSend: function(xhr, settings) {
         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
-});
-//
+});*/
+
 
 $(function() {
 
+    var form = $('#contactForm');
+
     $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
+
         preventSubmit: true,
         submitError: function($form, event, errors) {
             // additional error messages or events
         },
         submitSuccess: function($form, event) {
-            event.preventDefault(); // prevent default submit behaviour
+            //event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
             var name = $("input#name").val();
-            var email = $("input#email").val();
+            /*var email = $("input#email").val();
             var phone = $("input#phone").val();
             var message = $("textarea#message").val();
-            //var captcha = $("textarea#g-recaptcha-response").attr("value");
-            var firstName = name; // For Success/Failure Message
+            var captcha = $("textarea#g-recaptcha-response").attr("value");*/
+            //var firstName = name; // For Success/Failure Message*/
             // Check for white space in name for Success/Fail message
-            if (firstName.indexOf(' ') >= 0) {
+            /*if (firstName.indexOf(' ') >= 0) {
                 firstName = name.split(' ').slice(0, -1).join(' ');
-            }
+            }*/
 
             $.ajax({
 //                url: "././mail/contact_me.php",
-                url: $(this).attr('action'),
-                type: "POST",
-                data: {
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: /*{
+                    
                     name: name,
                     phone: phone,
                     email: email,
                     message: message,
-                    //captcha: captcha
+                    captcha: captcha
+                }*/ form.serialize(),
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        console.log("Hello from Firefox code");
+                    }
                 },
                 cache: false,
                 success: function() {
@@ -83,7 +93,7 @@ $(function() {
                     $('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
-                    $('#success > .alert-danger').append("<strong>Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!");
+                    $('#success > .alert-danger').append("<strong>Sorry " + name + ", it seems that my mail server is not responding. Please try again later!");
                     $('#success > .alert-danger').append('</div>');
                     //clear all fields
                     $('#contactForm').trigger("reset");
@@ -95,10 +105,10 @@ $(function() {
         },
     });
 
-    $("a[data-toggle=\"tab\"]").click(function(e) {
+    /*$("a[data-toggle=\"tab\"]").click(function(e) {
         e.preventDefault();
         $(this).tab("show");
-    });
+    });*/
 });
 
 

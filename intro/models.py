@@ -1,50 +1,17 @@
 from django.db import models
-from django import forms
+
 from django.core.validators import RegexValidator
-from snowpenguin.django.recaptcha2.fields import ReCaptchaField
-from snowpenguin.django.recaptcha2.widgets import ReCaptchaWidget
-
-
-phoneValidator = RegexValidator(r'^(\+237[2356789]\d{8}|[2356789]\d{8})$',
-                                'Enter a valid Cameroon phone number.')
 
 # Create your models here.
 
+phoneValidator = RegexValidator(r'^(\+237[62][2356789]\d{7}|[62][2356789]\d{7})$',
+                                'Enter a valid Cameroon phone number.')
 
-class ContactForm(forms.Form):
 
-    contact_name = forms.CharField(required=True, widget=forms.TextInput(
-        attrs={
-            'type': 'text',
-            'class': 'form-control',
-            'placeholder': "Your Name *",
-            'id': 'name'
-        }
-    ))
-    contact_email = forms.EmailField(required=True, widget=forms.TextInput(
-        attrs={
-            'type': 'email',
-            'class': 'form-control',
-            'placeholder': "Your Email *",
-            'id': 'email'
-        }
-    ))
-    contact_phone = forms.CharField(required=True, validators=[phoneValidator], max_length=13, widget=forms.TextInput(
-        # contact_phone = forms.CharField(required=True, widget=forms.TextInput(
-        attrs={
-            'type': 'tel',
-            'class': 'form-control',
-            'placeholder': "Your Phone *",
-            'id': 'phone',
-            'pattern': '^(\+237[2356789]\d{8}|[2356789]\d{8})$'
-        }
-    ))
-    contact_message = forms.CharField(required=True, widget=forms.Textarea(
-        attrs={
-            'class': 'form-control',
-            'style': 'height:135px',
-            'placeholder': "Your Message *",
-            'id': 'message'
-        }
-    ))
-    # captcha = ReCaptchaField(widget=ReCaptchaWidget())
+class Contact(models.Model):
+
+    contact_name = models.CharField(max_length=100)
+    contact_email = models.EmailField()
+    contact_phone = models.CharField(validators=[phoneValidator], max_length=13)
+    contact_message = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
