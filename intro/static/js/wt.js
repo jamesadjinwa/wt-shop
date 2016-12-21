@@ -1,6 +1,10 @@
-$( document ).ready(function() {
+ 
+
+
+/*$( document ).ready(function() {
     console.log( "ready!" );
    $('.messages').fadeOut(5000);
+   });*/
    
    /*$('#fbutton').click(function() {
 	var name = $("input#name").val();
@@ -18,7 +22,7 @@ $( document ).ready(function() {
 	}
 });*/
 
-});
+
 
 
 /*{% if messages %}

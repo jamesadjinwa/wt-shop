@@ -49,7 +49,10 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Wizards Technology</a>
+                <!--<a class="navbar-brand page-scroll" href="#page-top">Wizards Technology</a>-->
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <img class="changesize" src="{% static 'img/logos/wt.png' %}">
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -258,12 +261,12 @@ des solutions informatiques.</h3>
                                 <img src="{% static 'img/logos/branding_dell-logo.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
                         </div>
-                        <!--<div class="col-md-3 col-sm-6">
+                        <div class="col-md-3 col-sm-6">
                             <a href="#">
-                                <img src="{% static 'img/logos/themeforest.jpg' %}" class="img-responsive img-centered" alt="">
+                                <img src="{% static 'img/logos/branding_hp-logo.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
                         </div>
-                        <div class="col-md-3 col-sm-6">
+                        <!--<div class="col-md-3 col-sm-6">
                             <a href="#">
                                 <img src="{% static 'img/logos/creative-market.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
@@ -288,7 +291,7 @@ des solutions informatiques.</h3>
 
                 {% block content %}
 
-                    <form role="form" name="sentMessage" id="contactForm" method="post" action="{% url "intro" %}">
+                    <form role="form" name="sentMessage" id="contactForm" novalidate method="post" action="{% url "intro" %}">
 
                         {% csrf_token %}
 
@@ -598,7 +601,7 @@ des solutions informatiques.</h3>
 
     <!-- Theme JavaScript -->
     <script src="{% static 'js/agency.min.js' %}"></script>
-    <!--<script src="{% static 'js/wt.js' %}"></script>-->
+    <script src="{% static 'js/wt.js' %}"></script>
 
 </body>
 
