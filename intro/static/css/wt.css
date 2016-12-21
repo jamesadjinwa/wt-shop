@@ -106,3 +106,15 @@ ul.social-buttons li a:hover {
 .contacts  {
     font-size: 15px;
 }
+
+/* About Panels */
+.panel {
+    margin-right: 5%;
+    float: left;
+    border: none;
+}
+
+.panel-info>.panel-heading {
+    background: none;
+    border-color: #fc2313;
+}
