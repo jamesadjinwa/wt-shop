@@ -6,6 +6,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^$|^#contact$', views.intro, name="intro"),
+    url(r'^$', views.intro, name="intro"),
     # url(r'^#contact$', views.contact, name="contact"),
+    url(r'^privacy-policy$', views.privacy_policy, name="privacy_policy"),
 ]

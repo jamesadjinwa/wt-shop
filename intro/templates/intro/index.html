@@ -27,7 +27,9 @@
     <!-- Theme CSS -->
     <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/wt.css' %}" rel="stylesheet">
-    <link href="{% static 'scss/wt.scss' %}" rel="stylesheet">
+    <!--<link href="{% static 'scss/wt.scss' %}" rel="stylesheet">-->
+    <link href="{% static 'css/pnotify.custom.min.css' %}" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -291,7 +293,7 @@ des solutions informatiques.</h3>
 
                 {% block content %}
 
-                    <form role="form" name="sentMessage" id="contactForm" novalidate method="post" action="{% url "intro" %}">
+                    <form role="form" name="sentMessage" id="contactForm" novalidate method="post">
 
                         {% csrf_token %}
 
@@ -351,6 +353,7 @@ des solutions informatiques.</h3>
                                         <strong>{{ message }}</strong>
                                         {% endfor %}
                                     </div>
+                                    
                                     {% endif %}
 
                                 </div>
@@ -393,7 +396,7 @@ des solutions informatiques.</h3>
 
                 <div class="col-md-4">
                     <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
+                        <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a>
                         </li>
                         <li><a href="#">Terms of Use</a>
                         </li>
@@ -602,6 +605,7 @@ des solutions informatiques.</h3>
     <!-- Theme JavaScript -->
     <script src="{% static 'js/agency.min.js' %}"></script>
     <script src="{% static 'js/wt.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pnotify.custom.min.js' %}"></script>
 
 </body>
 

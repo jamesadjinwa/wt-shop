@@ -59,7 +59,7 @@ def intro(request):
                 form_class.save_m2m()
 
                 # pdb.set_trace()
-                return HttpResponseRedirect('#contact')
+                return HttpResponseRedirect('')
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
@@ -70,10 +70,7 @@ def intro(request):
 
     return render(request, 'intro/index.html', {'form': form_class, })
 
-                # new_form = form_class.save(commit=False)
-                # new_form.contact_name = contact_name
-                # new_form.contact_email = contact_email
-                # new_form.contact_phone = phone
-                # new_form.contact_message = message
-                # new_form.save()
-                # form_class.save_m2m()
+
+def privacy_policy(request):
+
+    return render(request, 'intro/privacy_policy.html')
