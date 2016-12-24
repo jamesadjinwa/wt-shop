@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load recaptcha2 %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,14 +27,18 @@
     <!-- Theme CSS -->
     <link href="{% static 'css/agency.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/wt.css' %}" rel="stylesheet">
+    <!--<link href="{% static 'scss/wt.scss' %}" rel="stylesheet">-->
+    <link href="{% static 'css/pnotify.custom.min.css' %}" media="all" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+    {% recaptcha_init %}
 </head>
 
 <body id="page-top" class="index">
@@ -46,7 +51,10 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Wizards Technology</a>
+                <!--<a class="navbar-brand page-scroll" href="#page-top">Wizards Technology</a>-->
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <img class="changesize" src="{% static 'img/logos/wt.png' %}">
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -68,6 +76,7 @@
                         <a class="page-scroll" href="#partners">Partners</a>
                     </li>
                     <li>
+                        <!--<a class="page-scroll" href="{% url 'intro' %}#contact" data-target="#contact">Contact</a>-->
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
                 </ul>
@@ -238,7 +247,7 @@ des solutions informatiques.</h3>
     </section>
 
     <!-- Partners Aside -->
-    <id id="partners"></id>
+    <id id="partners">
         <aside class="clients bg-light-gray">
             <div class="container">
                 <div class="row">
@@ -249,17 +258,17 @@ des solutions informatiques.</h3>
                                 <img src="{% static 'img/logos/branding_lenovo-logo.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
                         </div>
+                        <div class="col-md-3 col-sm-6">
+                            <a href="#">
+                                <img src="{% static 'img/logos/branding_dell-logo.jpg' %}" class="img-responsive img-centered" alt="">
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <a href="#">
+                                <img src="{% static 'img/logos/branding_hp-logo.jpg' %}" class="img-responsive img-centered" alt="">
+                            </a>
+                        </div>
                         <!--<div class="col-md-3 col-sm-6">
-                            <a href="#">
-                                <img src="{% static 'img/logos/designmodo.jpg' %}" class="img-responsive img-centered" alt="">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <a href="#">
-                                <img src="{% static 'img/logos/themeforest.jpg' %}" class="img-responsive img-centered" alt="">
-                            </a>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
                             <a href="#">
                                 <img src="{% static 'img/logos/creative-market.jpg' %}" class="img-responsive img-centered" alt="">
                             </a>
@@ -276,40 +285,85 @@ des solutions informatiques.</h3>
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
+
+                {% block content %}
+
+                    <form role="form" name="sentMessage" id="contactForm" novalidate method="post">
+
+                        {% csrf_token %}
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
+
+                                    {{ form.contact_name.errors }}
+                                    <!--<input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">-->
+                                    {{ form.contact_name }}
+
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
+
+                                    {{ form.contact_email.errors }}
+                                    <!--<input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">-->
+                                    {{ form.contact_email }}
+
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
+
+                                    {{ form.contact_phone.errors }}
+                                    <!--<input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">-->
+                                    {{ form.contact_phone }}
+
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
+
+                                    {{ form.contact_message.errors }}
+                                    <!--<textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>-->
+                                    {{ form.contact_message }}
                                     <p class="help-block text-danger"></p>
                                 </div>
+                                <!--<div class="g-recaptcha" data-sitekey="6Le5PQ4UAAAAAGZU8Wrffzkgc3DzBgtBWvU7RhSu"></div>-->
+
+                                <div class="form-group">
+                                {{ form.captcha.errors }}
+                                {{ form.captcha }}
+                                <p class="help-block text-danger"></p>
+                                </div>
+
                             </div>
+
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Send Message</button>
+                                <div id="success">
+
+                                    {% if messages %}
+                                    <div class="alert alert-success">
+                                        {% for message in messages %}
+                                        <button class="close" type="button" data-dismiss="alert" aria-hidden="true">×</button>
+                                        <strong>{{ message }}</strong>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                    {% endif %}
+
+                                </div>
+                                <button id="fbutton" type="submit" class="btn btn-xl">Send Message</button>
                             </div>
                         </div>
                     </form>
+
+                {% endblock %}
+
                 </div>
             </div>
         </div>
@@ -325,8 +379,9 @@ des solutions informatiques.</h3>
                         <li><i class="fa fa-mobile">&nbsp;+237 699 011 293</i></li>
                     </ul>
                 </div>
+                {% now "Y" as current_year %}
                 <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Wizards Technology 2016</span>
+                    <span class="copyright">Copyright &copy; Wizards Technology {{ current_year }}</span>
                 </div>
                 <div class="col-md-4">
                     <ul class="list-inline social-buttons">
@@ -341,7 +396,7 @@ des solutions informatiques.</h3>
 
                 <div class="col-md-4">
                     <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
+                        <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a>
                         </li>
                         <li><a href="#">Terms of Use</a>
                         </li>
@@ -549,6 +604,8 @@ des solutions informatiques.</h3>
 
     <!-- Theme JavaScript -->
     <script src="{% static 'js/agency.min.js' %}"></script>
+    <script src="{% static 'js/wt.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/pnotify.custom.min.js' %}"></script>
 
 </body>
 

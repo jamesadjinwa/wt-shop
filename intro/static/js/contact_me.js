@@ -31,7 +31,6 @@ function csrfSafeMethod(method) {
     }
 });*/
 
-
 $(function() {
 
     var form = $('#contactForm');
@@ -43,13 +42,13 @@ $(function() {
             // additional error messages or events
         },
         submitSuccess: function($form, event) {
-            //event.preventDefault(); // prevent default submit behaviour
+            event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
             var name = $("input#name").val();
-            /*var email = $("input#email").val();
+            var email = $("input#email").val();
             var phone = $("input#phone").val();
             var message = $("textarea#message").val();
-            var captcha = $("textarea#g-recaptcha-response").attr("value");*/
+            var captcha = $("textarea#g-recaptcha-response").attr("value");
             //var firstName = name; // For Success/Failure Message*/
             // Check for white space in name for Success/Fail message
             /*if (firstName.indexOf(' ') >= 0) {
@@ -58,7 +57,7 @@ $(function() {
 
             $.ajax({
 //                url: "././mail/contact_me.php",
-                url: form.attr('action'),
+                url: '',
                 type: form.attr('method'),
                 data: /*{
                     
@@ -66,8 +65,9 @@ $(function() {
                     phone: phone,
                     email: email,
                     message: message,
-                    captcha: captcha
-                }*/ form.serialize(),
+                    captcha: captcha,
+                } */
+                form.serialize(),
                 beforeSend: function(xhr, settings) {
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                         xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -77,26 +77,45 @@ $(function() {
                 cache: false,
                 success: function() {
                     // Success message
-                    $('#success').html("<div class='alert alert-success'>");
+                    /*$('#success').html("<div class='alert alert-success'>");
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-success')
                         .append("<strong>Your message has been sent. </strong>");
                     $('#success > .alert-success')
-                        .append('</div>');
+                        .append('</div>');*/
+
+                    new PNotify({
+                        //title: 'Your message has been sent.',
+                        text: 'Your message has been sent !',
+                        type: 'success',
+                        icon: 'fa fa-check',
+                        styling: 'fontawesome'
+                    });
 
                     //clear all fields
                     $('#contactForm').trigger("reset");
+                    grecaptcha.reset();
                 },
                 error: function() {
                     // Fail message
-                    $('#success').html("<div class='alert alert-danger'>");
+                    /*$('#success').html("<div class='alert alert-danger'>");
                     $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
                     $('#success > .alert-danger').append("<strong>Sorry " + name + ", it seems that my mail server is not responding. Please try again later!");
-                    $('#success > .alert-danger').append('</div>');
+                    $('#success > .alert-danger').append('</div>');*/
                     //clear all fields
+
+                    new PNotify({
+                        //title: 'Oops!',
+                        text: 'Sorry ' + name + ', it seems that our mail server is not responding. Please try again later!.',
+                        type: 'alert',
+                        icon: 'fa fa-ban',
+                        styling: 'fontawesome'
+                    });
+
                     $('#contactForm').trigger("reset");
+                    grecaptcha.reset();
                 },
             });
         },
@@ -111,8 +130,7 @@ $(function() {
     });*/
 });
 
-
 /*When clicking on Full hide fail/success boxes */
-$('#name').focus(function() {
+/*$('#name').focus(function() {
     $('#success').html('');
-});
+});*/
