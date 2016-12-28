@@ -49,6 +49,8 @@ $(function() {
             var phone = $("input#phone").val();
             var message = $("textarea#message").val();
             var captcha = $("textarea#g-recaptcha-response").attr("value");
+            var captchaResponse = grecaptcha.getResponse();
+            console.log(captchaResponse);
             //var firstName = name; // For Success/Failure Message*/
             // Check for white space in name for Success/Fail message
             /*if (firstName.indexOf(' ') >= 0) {
@@ -66,7 +68,7 @@ $(function() {
                     email: email,
                     message: message,
                     captcha: captcha,
-                } */
+                },*/
                 form.serialize(),
                 beforeSend: function(xhr, settings) {
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {

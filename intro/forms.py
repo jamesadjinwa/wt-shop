@@ -9,7 +9,7 @@ from .models import Contact
 
 class ContactForm(ModelForm):
 
-    captcha = ReCaptchaField(widget=ReCaptchaWidget())
+    captcha = ReCaptchaField(required=True, widget=ReCaptchaWidget())
 
     class Meta:
 
