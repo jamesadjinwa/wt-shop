@@ -1,4 +1,6 @@
 /* Navigation bar */
+{% load staticfiles %}
+
 
 /* Small screens */
 .navbar-custom .navbar-toggle {
@@ -29,6 +31,21 @@
 /* Brand */
 .navbar-custom .navbar-brand {
     color: #Fc2313;
+}
+
+/* Logo */
+
+#logo-scr {
+    background-image: url("/static/img/logos/wt.png");
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: bottom;
+}
+
+@media (max-width: 480px) {
+    .changesize {
+        width: 45%;
+    }
 }
 
 .navbar-custom .navbar-brand.active,
