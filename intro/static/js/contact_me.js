@@ -61,15 +61,15 @@ $(function() {
 //                url: "././mail/contact_me.php",
                 url: '',
                 type: form.attr('method'),
-                data: /*{
+                data: {
                     
                     name: name,
                     phone: phone,
                     email: email,
                     message: message,
                     captcha: captcha,
-                },*/
-                form.serialize(),
+                },
+                //form.serialize(),
                 beforeSend: function(xhr, settings) {
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                         xhr.setRequestHeader("X-CSRFToken", csrftoken);
