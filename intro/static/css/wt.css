@@ -38,13 +38,16 @@
 #logo-scr {
     background-image: url("/static/img/logos/wt.png");
     background-repeat: no-repeat;
-    background-size: 200%;
+    background-size: 100%;
     background-position: bottom;
+    width: 108px;
+    margin: -7px 0px 0px 40px;
+    height: 88px;
 }
 
-@media (max-width: 480px) {
-    .changesize {
-        width: 45%;
+@media (min-width: 360px) and (max-width: 766px) {
+    #logo-scr {
+        width: 50px;
     }
 }
 
