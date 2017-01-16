@@ -19,6 +19,7 @@ def intro(request):
     else:
 
         form_class = ContactForm(request.POST or None, request.FILES or None)
+        print(form_class.is_valid())
 
         if form_class.is_valid():
 
@@ -63,6 +64,8 @@ def intro(request):
 
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
+        else:
+            return HttpResponse(status=400)
 
         # else:
         #     messages.add_message(request, messages.ERROR, 'Sorry ...')

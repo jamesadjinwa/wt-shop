@@ -3,6 +3,6 @@ __pycache__
 start-env
 db.sqlite3
 settings.py
-/static
 .DS_Store
 .idea
+*.swp

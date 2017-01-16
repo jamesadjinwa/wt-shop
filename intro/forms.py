@@ -31,7 +31,7 @@ class ContactForm(ModelForm):
             'contact_phone': forms.TextInput(attrs={
                 'type': 'tel',
                 'class': 'form-control',
-                'placeholder': "Your Phone *",
+                'placeholder': "Your Phone * eg: +237234567890",
                 'id': 'phone',
                 'pattern': '^(\+237[62][2356789]\d{7}|[62][2356789]\d{7})$'
             }),

@@ -87,13 +87,13 @@
 }
 
 /* Partner */
-div.col-md-3.col-sm-6 {
-    width: 100%;
+#partners .section-heading {
+    font-size: 40px;
 }
 
-/*#partners {
-    padding: 50px 0;
-}*/
+#partners .col-md-3 {
+     margin: -3px -34px;
+}
 
 /* Footer */
 ul.list-inline.quicklinks a {
@@ -105,6 +105,18 @@ ul.social-buttons li a:focus,
 ul.social-buttons li a:hover {
     background-color: #fc2313;
 }
+
+.contacts  {
+    font-size: 15px;
+    list-style: none;
+    text-align: left;
+    width: 101%;
+    padding-left: 0%;
+}
+
+/*.contacts span {
+  padding-left: 2%;
+}*/
 
 /* End Footer*/
 
@@ -121,10 +133,6 @@ ul.social-buttons li a:hover {
 .open .dropdown-toggle.btn-primary {
     border-color: #9f9f9f;
     background-color: #9f9f9f;
-}
-
-.contacts  {
-    font-size: 15px;
 }
 
 /* About Panels */
