@@ -106,13 +106,13 @@ ul.social-buttons li a:hover {
     background-color: #fc2313;
 }
 
-.contacts  {
+/*.contacts  {
     font-size: 15px;
     list-style: none;
     text-align: left;
     width: 101%;
     padding-left: 0%;
-}
+}*/
 
 /*.contacts span {
   padding-left: 2%;
@@ -121,6 +121,12 @@ ul.social-buttons li a:hover {
 /* End Footer*/
 
 /* Details of Products */
+
+address{
+  font-size: 80%;
+  margin: 0px;
+  color: #0f0f0f;
+}
 
 .btn-primary {
     border-color: #c1c1c1;
@@ -145,4 +151,10 @@ ul.social-buttons li a:hover {
 .panel-info>.panel-heading {
     background: none;
     border-color: #fc2313;
+}
+.row-content{
+  margin: 0px auto;
+  padding: 20px 0px 20px 0px;
+  border-bottom: 0.5px ridge rgb(255, 96, 117);
+  min-height: 200px;
 }
